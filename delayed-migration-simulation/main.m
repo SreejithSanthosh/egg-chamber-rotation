@@ -11,7 +11,7 @@ ecc = 1.2; tau1 = 20; tau2 = 20; tau3 = 20;
 nBeta = 40; dBeta = 2*pi/nBeta; betaArr = -pi:dBeta:pi; nBeta = numel(betaArr);
 dt = 10^(-2); T = 1; tArr = 0:dt:T; Nt = numel(tArr);
 
-% Making the elipsoidal mesh 
+% Making the mesh 
 Nspac = 100; thetaArr = linspace(0+0.001,pi-0.001,Nspac);
 phiArr = linspace(0+0.001,2*pi-0.001,Nspac);
 [thetaMesh,phiMesh] = meshgrid(thetaArr,phiArr);
@@ -37,7 +37,7 @@ nVecCell = cross(zeta1,zeta2); nVecCellNorm = nVecCell./vecnorm(nVecCell,2,1); %
 
 
 %% Simulate the equtions
-fricAngMmntCoeff = getfricCoeffAngMomentum(ecc);
+fricAngMmntCoeff = getfricCoeffAngMomentumDelayed(ecc);
 omegaStoreBody = nan([3,Nt]); rotMatrStore = zeros([3,3,Nt]); bStoreBody = zeros([3,nCells,Nt]);
 cStore = zeros([Nt,nCells,nBeta]);
 
@@ -159,6 +159,7 @@ for ct = 2:round((Nt-1)/Nplots):Nt-1
     azLim = 1.1;
     xlim([-axLim axLim]); ylim([-axLim axLim]); zlim([-axLim axLim]);
     set(gca,'color','k','FontSize',fntSz); camva(5); camlight;
+    axis off;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subplot(1,4,3) % The polarity distribution of the cells 
