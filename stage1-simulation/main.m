@@ -272,16 +272,16 @@ for ct = 2:round((Nt-1)/Nplots):Nt-1
     cr = 50;
 
     subplot(2,4,3) % Plot the orientation of the long axis
-    polarplot(rad2deg(orientLongAxis(1,1:cr:ct)),rad2deg(orientLongAxis(2,1:cr:ct)),'w','LineWidth',1); hold on 
-    polarscatter(rad2deg(orientLongAxis(1,1:cr:ct)),rad2deg(orientLongAxis(2,1:cr:ct)),120,tArr(1:cr:ct),'filled'); hold on
+    polarplot(orientLongAxis(1,1:cr:ct),rad2deg(orientLongAxis(2,1:cr:ct)),'w','LineWidth',1); hold on 
+    polarscatter(orientLongAxis(1,1:cr:ct),rad2deg(orientLongAxis(2,1:cr:ct)),120,tArr(1:cr:ct),'filled'); hold on
     c = colorbar;  colormap('turbo'); c.FontSize = fntSz; c.Color = 'w'; clim([0 T]);
     set(gca,'color','k','FontSize',fntSz,'Rcolor','w','Thetacolor','w');
     rlim([0 180 ]);rticks([90,180]); rticklabels({'90','180'})
     title('AP Axis Orientation','Interpreter','latex','FontSize',fntSz,'Color','w'); 
 
     subplot(2,4,4) % Plot the orientation of the omega axis
-    polarplot(rad2deg(orientOmegaAxis(1,1:cr:ct)),rad2deg(orientOmegaAxis(2,1:cr:ct)),'w','LineWidth',1); hold on 
-    polarscatter(rad2deg(orientOmegaAxis(1,1:cr:ct)),rad2deg(orientOmegaAxis(2,1:cr:ct)),120,tArr(1:cr:ct),'filled'); hold on
+    polarplot(orientOmegaAxis(1,1:cr:ct),rad2deg(orientOmegaAxis(2,1:cr:ct)),'w','LineWidth',1); hold on 
+    polarscatter(orientOmegaAxis(1,1:cr:ct),rad2deg(orientOmegaAxis(2,1:cr:ct)),120,tArr(1:cr:ct),'filled'); hold on
     c = colorbar;  colormap('turbo'); c.FontSize = fntSz; c.Color = 'w';clim([0 T]);
     set(gca,'color','k','FontSize',fntSz,'Rcolor','w','Thetacolor','w');
     rlim([0 180 ]); rticks([90,180]); rticklabels({'90','180'})
